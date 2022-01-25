@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Post, Response } from '@nestjs/common';
+import { response } from 'express';
 import { AppService } from './app.service';
 
 @Controller()
@@ -11,8 +12,11 @@ export class AppController {
   }
 
   @Post('post')
-  receiveJson(@Body() b){
-    const response = this.appService.echoBody(b);
-    return response
+  @HttpCode(201)
+  receiveJson(@Body() b ){
+    return {
+      "statusCode": 201,
+      "message": this.appService.echoBody(b)
+    };
   }
 }

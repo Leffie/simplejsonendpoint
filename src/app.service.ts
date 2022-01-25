@@ -11,6 +11,6 @@ export class AppService {
 
   echoBody(b){
     AppService.globalVar =  b;
-    return "All good";
+    return 'all  Good';
   }
 }
