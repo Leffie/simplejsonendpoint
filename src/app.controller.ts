@@ -12,6 +12,7 @@ export class AppController {
 
   @Post('post')
   receiveJson(@Body() b){
-    return this.appService.echoBody(b);
+    const response = this.appService.echoBody(b);
+    return response
   }
 }
