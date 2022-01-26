@@ -4,13 +4,23 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  static globalVar: any;
-  getHello(): string {
-    return AppService.globalVar;
+  static varOne: any;
+  static varTwo: any;
+  getOne(): string {
+    return AppService.varOne;
   }
 
-  echoBody(b){
-    AppService.globalVar =  b;
+  postOne(b){
+    AppService.varOne =  b;
+    return 'all  Good';
+  }
+
+  getTwo(): string {
+    return AppService.varTwo;
+  }
+
+  postTwo(b){
+    AppService.varTwo =  b;
     return 'all  Good';
   }
 }

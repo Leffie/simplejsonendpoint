@@ -6,17 +6,30 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
+  @Get('getone')
   getHello(): string {
-    return this.appService.getHello();
+    return this.appService.getOne();
   }
 
-  @Post('post')
+  @Post('postone')
   @HttpCode(201)
   receiveJson(@Body() b ){
     return {
       "statusCode": 201,
-      "message": this.appService.echoBody(b)
-    };
+      "message": this.appService.postOne(b)
+    }
   }
+
+  @Get('gettwo')
+  getTwo(): string {
+    return this.appService.getTwo();
+  }
+    @Post('posttwo')
+  @HttpCode(201)
+  PostTwo(@Body() b ){
+    return {
+      "statusCode": 201,
+      "message": this.appService.postTwo(b)
+    };
+  }trice
 }
